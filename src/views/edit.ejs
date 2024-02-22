@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>Tienda de abarrotes</title>
+</head>
+<body>
+    <div data-role="page">
+        <div data-role="header">
+            <h1>Abarrotes "Lluly"</h1>
+                <div data-role="navbar">
+                <ul>
+                <li><a href="#" data-icon="home" class="ui-btn-active">Home</a></li>
+                <li><a href="#" data-icon="eye">Productos</a></li>
+                <li><a href="#" data-icon="user">Empleados</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="content">
+            <form action="/<%= product.barcode %>" method="post">
+                <div data-role="fieldcontain">
+                    <label>Codigo de barras:</label>
+                    <input type="text" name="barcode" id="txt_barcode" value="<%= product.barcode %>">
+                </div>
+                <div data-role="fieldcontain">
+                    <label>Nombre del Producto:</label>
+                    <input type="text" name="description" id="txt_description" value="<%= product.description %>">
+                </div>
+                <div data-role="fieldcontain">
+                    <label>Marca:</label>
+                    <input type="text" name="brand" id="txt_brand" value="<%= product.brand %>">
+                </div>
+                <div data-role="fieldcontain">
+                    <label>Precio:</label>
+                    <input type="text" name="price" id="txt_price" value="<%= product.price %>">
+                </div>
+                <div data-role="fieldcontain">
+                    <label>Costo:</label>
+                    <input type="text" name="cost" id="txt_cost" value="<%= product.cost %>">
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label>Stock:</label>
+                    <input type="text" name="stock" id="txt_stock" value="<%= product.stock %>">
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label>Fecha de expiración:</label>
+                    <input type="date" name="expiredDate" id="txt_expired_date" value="<%= product.expiredDate %>">
+                </div>
+
+                <label for="flip-2">Activo</label>
+                    <select name="status" id="flip-2" data-role="slider">
+                <option value="0" <%= product.status=0?"selected":""  %>>No</option>
+                <option value="1" <%= product.status=1?"selected":""  %>>Si</option>
+                    </select>
+                    
+
+                <button type="submit" id="submit-6" class="ui-shadow ui-btn ui-corner-all ui-mini">Guardar</button>
+            </form>
+        <div data-role="footer">
+                <h5>Developed by Lluly</h5>
+        </div>
+    </div>
+</body>
+</html>

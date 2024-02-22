@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>Tienda de abarrotes</title>
+</head>
+<body>
+    <div data-role="page">
+        <div data-role="header">
+            <h1>Abarrotes "Lluly"</h1>
+                <div data-role="navbar">
+                <ul>
+                <li><a href="#" data-icon="home" class="ui-btn-active">Home</a></li>
+                <li><a href="#" data-icon="eye">Productos</a></li>
+                <li><a href="#" data-icon="user">Empleados</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="content">
+            <form action="/" method="POST">
+                <div data-role="fieldcontain">
+                    <input type="text" name="barcode" id="txt_barcode" placeholder="Codigo de barras">
+                </div>
+                <div data-role="fieldcontain">
+                    <input type="text" name="description" id="txt_description" placeholder="Descripción">
+                </div>
+                <div data-role="fieldcontain">
+                    <input type="text" name="brand" id="txt_brand" placeholder="Marca">
+                </div>
+                <div data-role="fieldcontain">
+                    <input type="number" name="price" id="txt_price" placeholder="Precio">
+                </div>
+                <div data-role="fieldcontain">
+                    <input type="number" name="cost" id="txt_cost" placeholder="Costo">
+                </div>
+
+                <div data-role="fieldcontain">
+                    <input type="number" name="stock" id="txt_stock" placeholder="Existencias">
+                </div>
+
+                <div data-role="fieldcontain">
+                    <input type="date" name="expiredDate" id="txt_expired_date" placeholder="Fecha de caducidad">
+                </div>
+
+                <label for="flip-2">Activo</label>
+                    <select name="status" id="flip-2" data-role="slider">
+                <option value="0">No</option>
+                <option value="1">Si</option>
+                    </select>
+                    
+
+                <button type="submit" id="submit-6" class="ui-shadow ui-btn ui-corner-all ui-mini">Guardar</button>
+            </form>
+            <form>
+                <input data-type="search" id="searchForCollapsibleSet">
+                </form>
+                <div data-role="collapsibleset" data-filter="true" data-inset="true" id="collapsiblesetForFilter" data-input="#searchForCollapsibleSet">
+                <% products.forEach((product)=>{ %>
+                    <div data-role="collapsible" data-filtertext="<%= product.description %>">
+                        <h3><%= product.description %></h3>
+                        <ul data-role="listview" data-inset="false">
+                        <li>Codigo de barras: <%= product.barcode %></li>
+                        <li>Descripción: <%= product.description %></li>
+                        <li>Marca: <%= product.brand %></li>
+                        <li>Precio: <%= product.price %></li>
+                        <li>Costo: <%= product.cost %></li>
+                        <li>Stock: <%= product.stock %></li>
+                        <li>Fecha de expiración: <%= product.expiredDate %></li>
+                        <li>Estatus: <%= product.status %></li>
+                        <button><a style="text-decoration: none; color: black;" href="/<%= product.barcode %>">Editar</a></button>    
+                        <button><a style="text-decoration: none; color: black;" href="/deleteOne/<%= product.barcode %>">Eliminar</a></button> 
+                        </ul>
+                        </div>
+                <% }) %>
+        </div>
+        <div data-role="footer">
+                <h5>Developed by Lluly</h5>
+        </div>
+    </div>
+</body>
+</html>
